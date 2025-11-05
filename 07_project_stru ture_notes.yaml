@@ -1,0 +1,270 @@
+# 07_project_structure_notes.md
+> Project structure, build conventions, and implementation order for the side-scrolling steampunk RPG (working title TBD).
+
+---
+
+## 1) Top-Level Directory Layout
+
+/src                     # Game code (engine-agnostic where possible)
+/assets                  # Art, audio, fonts (source + exported)
+/docs                    # Design & planning documents (this file lives here)
+/tools                   # One-off scripts (atlas packing, audio batch, etc.)
+/build                   # Exported builds & CI artifacts
+/.config                 # Editor/formatter/linter configs (prettier, eslint, etc.)
+
+---
+
+## 2) /src Module Layout
+
+/src
+  /app                  # Game bootstrap, dependency injection, singletons
+  /core                 # Low-level utilities (math, rng, timers, state machine)
+  /systems              # Cross-cutting game systems (time-loop, save, inventory)
+  /combat               # Combat runtime + data (attacks, ai, hitboxes, dmg calc)
+  /entities             # Player, NPCs, enemies, bosses, projectiles
+  /train                # Train runtime: cars, connections, doors, warding, hazards
+  /world                # Stations, encounter tables, event director
+  /narrative            # Dialogue, barks, event scripting, encounter logic
+  /ui                   # HUD, menus, pause, level-up screen, shop UI
+  /data                 # JSON/YAML data (weapons, skills, encounters, etc.)
+  /integration          # Engine bindings (e.g., Godot/Unity scripts, input, scenes)
+  /sandbox              # Prototypes / spikes (keep small; delete often)
+
+---
+
+## 3) Naming & File Conventions
+
+- Files: lower_snake_case.ext (code), kebab-case (assets)
+- Classes/Types: PascalCase
+- Functions/Vars: camelCase
+- Scenes/Prefabs: PascalCase (PassengerCar.tscn, Cultist.prefab)
+- Data Tables: JSON or YAML with version field (weapons.v1.json, skills.v1.yml)
+- Assets:
+  - Sprites: sprites/char_player/idle_*.png
+  - Tilesets: tiles/train_interior.png
+  - Audio: music/track_departure.ogg, sfx/swing_sabre.ogg
+
+---
+
+## 4) Core Systems (What Lives Where)
+
+### /src/app
+- game.ts — entrypoint; initializes systems & scene graph
+- service_locator.ts — registers singletons (RNG, Save, EventBus, TimeLoop)
+
+### /src/core
+- rng.ts (seeded)
+- fixed_timestep.ts
+- stat_math.ts (SRD 5.2 adapters)
+- state_machine.ts
+- signals.ts (pub/sub)
+- geom.ts (AABB, rays)
+
+### /src/systems
+- time_loop/
+  - pocket_watch.ts: death → rewind → notify subsystems
+  - loop_state.ts: run index, day unlocked, divergence flags
+- save/
+  - save_manager.ts: meta-progression & options (no mid-run save)
+- inventory/
+  - inventory.ts, items_repo.ts, loot_tables.ts
+- progression/
+  - xp_tracker.ts, level_up_flow.ts (flip-card UI hooks)
+- skills/
+  - skills_runtime.ts, skill_repo.ts (Combat vs Field tags)
+- shop/
+  - shop_runtime.ts, price_rules.ts
+
+### /src/combat
+- combat_controller.ts (stamina, i-frames, parry windows)
+- hitbox.ts, hurtbox.ts, damage_calc.ts
+- weapons/ (sabres, rifles, wrenches, aether tools)
+- status_effects.ts (bleed, stagger, corruption, ward-burn)
+- ai/ behavior trees or state machines (cultist_sentry.ai.ts, aberration.ai.ts)
+
+### /src/entities
+- player/Player.ts (input, locomotion, climb/ladder/ledge)
+- npc/NpcBase.ts, passenger_*.ts, merchant.ts
+- enemies/ common base + concrete types
+- bosses/ day bosses with scripted phases
+
+### /src/train
+- train_graph.ts (ordered cars, adjacency, doors)
+- car_base.ts (PassengerCar, DiningCar, CargoWardCar, EngineCar, CoalCar)
+- ward_system.ts (rune integrity %, failure states, visual pulses)
+- hazards.ts (sparks, steam bursts, sway modifiers)
+- boarding_points.ts (roof hooks, windows, side-ladders)
+
+### /src/world
+- route_definition.ts (Palo Alto → Boston, four days, segments)
+- station_runtime.ts (refill, shop, short scenes)
+- encounter_director.ts (roll tables per segment; inject events)
+- divergence_rules.ts (loop-based mutations, memory fragments)
+
+### /src/narrative
+- dialogue_runner.ts (Yarn/Ink-like minimal runner or custom)
+- barks.ts, conversation_flags.ts, passenger_arcs.ts
+- endings_controller.ts (seal vs open cargo resolution)
+
+### /src/ui
+- hud.ts (HP, stamina, ammo, ward integrity)
+- level_up_screen.ts (flip-card counter, attribute assignment, skill picks)
+- pause_menu.ts, options_menu.ts, shop_ui.ts, map_strip.ts (route strip)
+
+### /src/data (authoritative)
+- attributes.v1.json, weapons.v1.json, skills.v1.json
+- enemies.v1.json, bosses.v1.json, encounters_day[1-4].v1.json
+- shops.v1.json, loot_tables.v1.json, dialogue.v1.yml
+- route.v1.json (segments, stations, bosses)
+
+### /src/integration
+- Engine glue: input map, physics layers, scene loading, animator bridges
+- Keep engine-specific bits here so game logic stays portable/testable
+
+---
+
+## 5) Data Schemas (JSON/YAML)
+
+### Attributes
+{
+  "version": 1,
+  "attributes": [
+    {"key": "str", "name": "Strength", "min": 1, "max": 20, "affects": ["melee_damage","carry"]},
+    {"key": "agi", "name": "Agility", "min": 1, "max": 20, "affects": ["attack_speed","evasion","ranged_accuracy"]},
+    {"key": "end", "name": "Endurance", "min": 1, "max": 20, "affects": ["hp","stamina_regen"]},
+    {"key": "int", "name": "Intellect", "min": 1, "max": 20, "affects": ["engineering","ranged_mods"]},
+    {"key": "spi", "name": "Spirit", "min": 1, "max": 20, "affects": ["eld_resist","ward_interact"]},
+    {"key": "luk", "name": "Luck", "min": 1, "max": 20, "affects": ["crit","loot_quality","corruption_resist"]}
+  ]
+}
+
+### Weapon
+{
+  "id": "sabre_brass_01",
+  "name": "Brass Sabre",
+  "type": "melee",
+  "scaling": {"str": 0.7, "agi": 0.3},
+  "staminaCost": 14,
+  "baseDamage": 18,
+  "moveset": ["light_slash","heavy_cleave","riposte"],
+  "tags": ["sabre","military"],
+  "rarity": "common"
+}
+
+### Skill
+{
+  "id": "steam_burst",
+  "name": "Steam Burst",
+  "category": "combat",
+  "cost": {"stamina": 20, "ammo": 0},
+  "effects": [{"type":"aoe_knockback","power":12}],
+  "requirements": {"level": 3, "attributes": {"end": 10}}
+}
+
+### Encounter
+{
+  "id": "roof_boarders_midday",
+  "weights": {"base": 10, "loopBonusAfter": 2},
+  "triggers": ["onTravel","segment:denver_plains"],
+  "spawns": [{"enemy":"cultist_boarder","count":[3,5]}],
+  "modifiers": ["low_visibility","train_sway"],
+  "rewards": {"xp": 45, "lootTable": "mid_tier"}
+}
+
+---
+
+## 6) Save & Meta-Progression
+
+- When: After death (level-up screen) or end of Day (checkpoint)
+- What:
+  - meta: max day unlocked, run count, options
+  - player: attributes, unlocked skills, codex flags
+  - inventory: owned gear, ammo caps
+- Not Saved: Mid-run state (health/position)
+
+{
+  "version": 1,
+  "meta": {"runs": 7, "maxDayUnlocked": 2},
+  "player": {"level": 6, "attributes": {"str":10,"agi":9,"end":11,"int":8,"spi":7,"luk":6}, "skills": ["steam_burst","counter_parry"]},
+  "inventory": {"weapons":["sabre_brass_01","rifle_mk1"],"capacity":{"ammo":120}},
+  "flags": {"saw_researcher_dream": true}
+}
+
+---
+
+## 7) Event Flow: Death → Rewind → Level Up
+
+[Combat Death]
+  -> systems/time_loop.pocket_watch.trigger()
+      -> fade_to_black
+      -> stop_music; play_watch_tick SFX
+      -> ui/level_up_screen.enter()
+          -> tally XP (systems/progression.xp_tracker)
+          -> flip-card counters animate totals
+          -> allocate Attribute Points
+          -> choose 0–1 Combat Skills and/or 0–1 Field Skills
+      -> save_manager.write(meta+player+inventory)
+      -> load_scene(PaloAltoDeparture or DayCheckpoint)
+      -> cue_departure_sequence()
+
+Edge cases:
+- If Day 2+ unlocked, offer Start From Day N
+- If death during boss, unlock “hint bark” next run
+
+---
+
+## 8) Build & Tooling
+
+- Engine: Any (keep bindings in /src/integration)
+- Versioning: SemVer (v0.1.0-prototype)
+- CI Tasks: lint → type-check → pack assets → export build
+- Linters/Formatters: eslint + prettier (or equivalent)
+- JSON schema check: ajv for /src/data/*
+- Asset Packing:
+  - Texture atlases via tools/pack_atlas.js
+  - Audio normalized to -14 LUFS (.ogg runtime)
+
+---
+
+## 9) Milestone Implementation Order
+
+1. Core Movement & Camera
+2. Combat v1 (light/heavy, stamina, hit/hurt boxes)
+3. Train Runtime (car switching, doors, roof traversal)
+4. Time Loop (death → rewind → load day 1)
+5. Level-Up Screen (XP tally, attribute allocation, skill pick)
+6. Stations & Shop (refill ammo, vendor)
+7. Ward System (integrity meter, failure events)
+8. Encounter Director (segment tables, bosses)
+9. Day 1 Content Lock (tutorial, first ambush, first boss)
+10. Divergence v1 (loop-based dialogue tweaks)
+11. Days 2–4, tuning, endings
+
+---
+
+## 10) Coding Standards
+
+- Avoid hidden singletons; inject dependencies
+- Deterministic RNG: seed per run (seed = loopIndex + userSalt)
+- Fixed timestep physics; interpolate visuals
+- Authoritative data-only logic
+- EventBus for intersystem communication (no circular deps)
+
+---
+
+## 11) Debug & Cheats (Dev Only)
+
+- F1: reload current car
+- F2: grant ammo
+- F5: kill player (test loop)
+- F6: jump to Day N (if unlocked)
+- ~ console: set attribute/skill flags; dump encounter rolls
+
+---
+
+## 12) Glossary
+
+- Loop: One full attempt (departure → death/completion)
+- Day: Chapter (1–4), unique boss and checkpoint
+- Ward Integrity: Magical seal % on cargo car
+- Divergence: World/NPC variations from prior loops

@@ -1,0 +1,28 @@
+# 04_leveling_and_progression.md
+
+## DEATH AND LEVEL-UP SEQUENCE
+1. Player dies.  
+2. Screen fades to black.  
+3. Body collapses; watch activates.  
+4. XP tally screen appears (flip-card UI).  
+5. Player distributes new **Attribute Points**.  
+6. Player selects new **Combat Skill** and/or **Field Skill**.  
+7. Game rewinds to start or last unlocked checkpoint.
+
+### EXPERIENCE SYSTEM
+XP gained from:
+- Defeating enemies
+- Repairing train subsystems
+- Completing side objectives
+- Discovering secrets
+
+### SKILL TYPES
+- **Combat Skills:** active battle abilities (e.g., steam burst, counter parry, rifle flourish).
+- **Field Skills:** passive or contextual (e.g., lockpicking, engineering, negotiation).
+
+### PROGRESSION BALANCE
+- Level-ups occur **only after death**.  
+- Each loop shortens the time to mastery while increasing difficulty.  
+- Story events evolve slightly after each loop.
+
+---

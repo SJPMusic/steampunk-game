@@ -1,0 +1,10 @@
+/docs
+│
+├── 00_game_vision_doc.md
+├── 01_core_loop.md
+├── 02_world_and_story.md
+├── 03_mechanics_systems.md
+├── 04_leveling_and_progression.md
+├── 05_combat_design.md
+├── 06_art_and_audio_style.md
+└── 07_project_structure_notes.md

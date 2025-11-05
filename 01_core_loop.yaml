@@ -1,0 +1,23 @@
+
+# 01_core_loop.md
+
+## OVERVIEW
+The entire game occurs during one continuous train journey.  
+Every death rewinds time to the start, preserving the player’s growth.
+
+### LOOP PHASES
+1. **Departure:** Board train, speak with NPCs, inspect cargo.
+2. **Travel:** Random events, enemy incursions, environmental hazards.
+3. **Combat:** Fast, deliberate side-scrolling engagements.
+4. **Death:** Pocket watch activates — time resets.
+5. **Resurrection Sequence:**
+   - Score screen tallies XP.
+   - Level-up interface (flip-card animation).
+   - Attribute and skill distribution.
+6. **Restart Journey:** With improved stats, new narrative variations, and altered encounters.
+
+### PLAYER GOAL
+Survive all four in-game days of travel without dying once.  
+Each successful “day” unlocks a permanent checkpoint for future runs.
+
+---

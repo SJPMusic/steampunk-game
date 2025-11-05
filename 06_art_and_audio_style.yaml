@@ -1,0 +1,26 @@
+# 06_art_and_audio_style.md
+
+## VISUAL STYLE
+- **Era:** 16-bit SNES/Genesis.
+- **Resolution:** 320x180 base (scaled).
+- **Palette:** Warm brass, sepia, muted reds; corruption adds violet/teal hues.
+- **Lighting:** Subtle dynamic lights and parallax depth.
+- **UI:** Pocket-watch motif, riveted panels, brass dials.
+
+## CHARACTER DESIGN
+- Expressive pixel animation (2-4 frame idle loops, fluid attack frames).
+- Distinct silhouettes per faction: polished brass military vs. ragged cultists.
+
+## ENVIRONMENT
+Each train car a distinct biome:
+- Passenger car (warm lighting, chatter)
+- Cargo car (runic wards, humming sigils)
+- Dining car (elegant decay)
+- Engine room (heat haze, glowing coals)
+
+## AUDIO
+- **Instruments:** Brass, piano, organ, theremin.
+- **Rhythm motif:** ticking watch, pulsing steam vents.
+- **Dynamic layers:** combat adds percussion; peace returns to rhythmic chug.
+
+---

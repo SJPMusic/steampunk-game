@@ -1,0 +1,32 @@
+# 05_combat_design.md
+
+## COMBAT STYLE
+Real-time, deliberate, brutal.
+- 2D side-view perspective.
+- Stamina-based attacks and dodges.
+- Enemies hit hard; precision and timing matter.
+
+### REFERENCE FEEL
+Comparable to *Salt and Sanctuary* and *Blasphemous*.
+
+### WEAPON CATEGORIES
+| Type | Attribute Scale | Description |
+|------|------------------|--------------|
+| Sabres | Strength / Agility | Balanced melee |
+| Steam Rifles | Agility / Intellect | Long-range |
+| Wrenches | Strength / Endurance | Slow but powerful |
+| Aether Tools | Spirit / Intellect | Magical hybrid |
+
+### ENEMY TYPES
+- **Cultists:** Humanoid zealots using corrupted technology.
+- **Aberrations:** Mutated animals and mechanical hybrids.
+- **Eldritch Shades:** Phase-warping horrors from beyond.
+
+### BOSS ENCOUNTERS
+Each “day” ends with a boss linked to the cargo’s influence:
+- Day 1: Cult Saboteur Captain
+- Day 2: Corrupted Engine Beast
+- Day 3: Temporal Phantom
+- Day 4: The Cargo Itself
+
+---

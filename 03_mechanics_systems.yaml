@@ -1,0 +1,27 @@
+# 03_mechanics_systems.md
+
+## STAT SYSTEM (SRD 5.2 ADAPTATION)
+| Attribute | Description | Affects |
+|------------|--------------|----------|
+| Strength | Physical power | Melee damage, carry weight |
+| Agility | Dexterity and reflex | Attack speed, dodge, ranged accuracy |
+| Endurance | Vitality and stamina | HP, stamina regeneration |
+| Intellect | Technical aptitude | Engineering, ward repair, ranged weapon mods |
+| Spirit | Aether sensitivity | Magic resistance, eldritch perception |
+| Luck | Fate and randomness | Critical hits, loot quality, corruption resistance |
+
+### RESOLUTION MECHANICS
+Behind-the-scenes RNG weighted by attribute modifiers.  
+Attack rolls, saving throws, and environmental checks resolved probabilistically.
+
+### INVENTORY
+- Limited slots per car
+- Ammo, melee weapons, consumables, relics
+- Weight impacts mobility
+
+### COMBAT MODIFIERS
+- Steam Pressure Meter: stamina equivalent
+- Ward Integrity: determines magic barrier stability
+- Sanity Level: fluctuates near eldritch phenomena; influences visual distortion
+
+---
