@@ -9,13 +9,13 @@
   - [x] 1.4 Create `jump` action (Space, Gamepad A button)
   - [x] 1.5 Verify input actions are saved correctly
 
-- [ ] 2. Create Player Character Scene
-  - [ ] 2.1 Create new scene: `scenes/player.tscn` with CharacterBody2D as root
-  - [ ] 2.2 Add Sprite2D node with placeholder 32x32 pixel sprite (colored rectangle)
-  - [ ] 2.3 Add CollisionShape2D with RectangleShape2D matching sprite size
-  - [ ] 2.4 Add AnimationPlayer node for future animations
-  - [ ] 2.5 Add Camera2D node as child, enable position smoothing
-  - [ ] 2.6 Save player scene
+- [x] 2. Create Player Character Scene
+  - [x] 2.1 Create new scene: `scenes/player.tscn` with CharacterBody2D as root
+  - [x] 2.2 Add Sprite2D node with placeholder 32x32 pixel sprite (colored rectangle)
+  - [x] 2.3 Add CollisionShape2D with RectangleShape2D matching sprite size
+  - [x] 2.4 Add AnimationPlayer node for future animations
+  - [x] 2.5 Add Camera2D node as child, enable position smoothing
+  - [x] 2.6 Save player scene
 
 - [ ] 3. Implement Basic Movement Script
   - [ ] 3.1 Create `scripts/player_controller.gd` script
