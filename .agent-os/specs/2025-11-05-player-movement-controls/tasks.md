@@ -17,15 +17,15 @@
   - [x] 2.5 Add Camera2D node as child, enable position smoothing
   - [x] 2.6 Save player scene
 
-- [ ] 3. Implement Basic Movement Script
-  - [ ] 3.1 Create `scripts/player_controller.gd` script
-  - [ ] 3.2 Define movement constants (SPEED, ACCELERATION, FRICTION, GRAVITY)
-  - [ ] 3.3 Implement `_physics_process(delta)` with gravity application
-  - [ ] 3.4 Implement horizontal input handling with `Input.get_axis()`
-  - [ ] 3.5 Apply acceleration/deceleration to velocity
-  - [ ] 3.6 Call `move_and_slide()` to execute movement
-  - [ ] 3.7 Attach script to Player CharacterBody2D
-  - [ ] 3.8 Test basic left/right movement in a minimal test scene
+- [x] 3. Implement Basic Movement Script
+  - [x] 3.1 Create `scripts/player_controller.gd` script
+  - [x] 3.2 Define movement constants (SPEED, ACCELERATION, FRICTION, GRAVITY)
+  - [x] 3.3 Implement `_physics_process(delta)` with gravity application
+  - [x] 3.4 Implement horizontal input handling with `Input.get_axis()`
+  - [x] 3.5 Apply acceleration/deceleration to velocity
+  - [x] 3.6 Call `move_and_slide()` to execute movement
+  - [x] 3.7 Attach script to Player CharacterBody2D
+  - [x] 3.8 Test basic left/right movement in a minimal test scene
 
 - [ ] 4. Implement Jump Mechanics
   - [ ] 4.1 Add JUMP_VELOCITY constant to player script
