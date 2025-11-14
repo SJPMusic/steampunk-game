@@ -27,14 +27,14 @@
   - [x] 3.7 Attach script to Player CharacterBody2D
   - [x] 3.8 Test basic left/right movement in a minimal test scene
 
-- [ ] 4. Implement Jump Mechanics
-  - [ ] 4.1 Add JUMP_VELOCITY constant to player script
-  - [ ] 4.2 Detect jump input with `Input.is_action_just_pressed("jump")`
-  - [ ] 4.3 Apply upward velocity when on ground and jump pressed
-  - [ ] 4.4 Implement variable jump height (reduce upward velocity on early release)
-  - [ ] 4.5 Add air control (reduce horizontal acceleration multiplier when airborne)
-  - [ ] 4.6 Test jumping with different hold durations
-  - [ ] 4.7 Tune jump feel (adjust JUMP_VELOCITY and GRAVITY values)
+- [x] 4. Implement Jump Mechanics
+  - [x] 4.1 Add JUMP_VELOCITY constant to player script
+  - [x] 4.2 Detect jump input with `Input.is_action_just_pressed("jump")`
+  - [x] 4.3 Apply upward velocity when on ground and jump pressed
+  - [x] 4.4 Implement variable jump height (reduce upward velocity on early release)
+  - [x] 4.5 Add air control (reduce horizontal acceleration multiplier when airborne)
+  - [x] 4.6 Test jumping with different hold durations
+  - [x] 4.7 Tune jump feel (adjust JUMP_VELOCITY and GRAVITY values)
 
 - [ ] 5. Implement State Machine
   - [ ] 5.1 Define State enum (IDLE, RUNNING, JUMPING, FALLING)

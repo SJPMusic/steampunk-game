@@ -6,11 +6,22 @@ const ACCELERATION = 800.0        # Horizontal acceleration
 const FRICTION = 1000.0          # Deceleration when no input
 const GRAVITY = 980.0            # Gravity force (pixels/sec²)
 const AIR_CONTROL = 0.8          # Air movement multiplier (0.0-1.0)
+const JUMP_VELOCITY = -300.0     # Initial jump force (negative = up)
 
 func _physics_process(delta: float) -> void:
 	# Apply gravity when not on floor
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+
+	# Handle jump input
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		# Player pressed jump while on ground - apply upward velocity
+		velocity.y = JUMP_VELOCITY
+
+	# Variable jump height - release jump early to fall faster
+	if Input.is_action_just_released("jump") and velocity.y < 0:
+		# Player released jump while still rising - reduce upward velocity
+		velocity.y *= 0.5
 
 	# Get horizontal input direction (-1 for left, 1 for right, 0 for none)
 	var input_direction = Input.get_axis("move_left", "move_right")
