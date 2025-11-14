@@ -9,32 +9,32 @@
   - [x] 1.4 Create `jump` action (Space, Gamepad A button)
   - [x] 1.5 Verify input actions are saved correctly
 
-- [ ] 2. Create Player Character Scene
-  - [ ] 2.1 Create new scene: `scenes/player.tscn` with CharacterBody2D as root
-  - [ ] 2.2 Add Sprite2D node with placeholder 32x32 pixel sprite (colored rectangle)
-  - [ ] 2.3 Add CollisionShape2D with RectangleShape2D matching sprite size
-  - [ ] 2.4 Add AnimationPlayer node for future animations
-  - [ ] 2.5 Add Camera2D node as child, enable position smoothing
-  - [ ] 2.6 Save player scene
+- [x] 2. Create Player Character Scene
+  - [x] 2.1 Create new scene: `scenes/player.tscn` with CharacterBody2D as root
+  - [x] 2.2 Add Sprite2D node with placeholder 32x32 pixel sprite (colored rectangle)
+  - [x] 2.3 Add CollisionShape2D with RectangleShape2D matching sprite size
+  - [x] 2.4 Add AnimationPlayer node for future animations
+  - [x] 2.5 Add Camera2D node as child, enable position smoothing
+  - [x] 2.6 Save player scene
 
-- [ ] 3. Implement Basic Movement Script
-  - [ ] 3.1 Create `scripts/player_controller.gd` script
-  - [ ] 3.2 Define movement constants (SPEED, ACCELERATION, FRICTION, GRAVITY)
-  - [ ] 3.3 Implement `_physics_process(delta)` with gravity application
-  - [ ] 3.4 Implement horizontal input handling with `Input.get_axis()`
-  - [ ] 3.5 Apply acceleration/deceleration to velocity
-  - [ ] 3.6 Call `move_and_slide()` to execute movement
-  - [ ] 3.7 Attach script to Player CharacterBody2D
-  - [ ] 3.8 Test basic left/right movement in a minimal test scene
+- [x] 3. Implement Basic Movement Script
+  - [x] 3.1 Create `scripts/player_controller.gd` script
+  - [x] 3.2 Define movement constants (SPEED, ACCELERATION, FRICTION, GRAVITY)
+  - [x] 3.3 Implement `_physics_process(delta)` with gravity application
+  - [x] 3.4 Implement horizontal input handling with `Input.get_axis()`
+  - [x] 3.5 Apply acceleration/deceleration to velocity
+  - [x] 3.6 Call `move_and_slide()` to execute movement
+  - [x] 3.7 Attach script to Player CharacterBody2D
+  - [x] 3.8 Test basic left/right movement in a minimal test scene
 
-- [ ] 4. Implement Jump Mechanics
-  - [ ] 4.1 Add JUMP_VELOCITY constant to player script
-  - [ ] 4.2 Detect jump input with `Input.is_action_just_pressed("jump")`
-  - [ ] 4.3 Apply upward velocity when on ground and jump pressed
-  - [ ] 4.4 Implement variable jump height (reduce upward velocity on early release)
-  - [ ] 4.5 Add air control (reduce horizontal acceleration multiplier when airborne)
-  - [ ] 4.6 Test jumping with different hold durations
-  - [ ] 4.7 Tune jump feel (adjust JUMP_VELOCITY and GRAVITY values)
+- [x] 4. Implement Jump Mechanics
+  - [x] 4.1 Add JUMP_VELOCITY constant to player script
+  - [x] 4.2 Detect jump input with `Input.is_action_just_pressed("jump")`
+  - [x] 4.3 Apply upward velocity when on ground and jump pressed
+  - [x] 4.4 Implement variable jump height (reduce upward velocity on early release)
+  - [x] 4.5 Add air control (reduce horizontal acceleration multiplier when airborne)
+  - [x] 4.6 Test jumping with different hold durations
+  - [x] 4.7 Tune jump feel (adjust JUMP_VELOCITY and GRAVITY values)
 
 - [ ] 5. Implement State Machine
   - [ ] 5.1 Define State enum (IDLE, RUNNING, JUMPING, FALLING)
