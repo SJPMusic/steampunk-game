@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+# State machine
+enum State { IDLE, RUNNING, JUMPING, FALLING }
+var current_state: State = State.IDLE
+
 # Movement constants (tunable)
 const SPEED = 120.0              # Max horizontal speed (pixels/sec)
 const ACCELERATION = 800.0        # Horizontal acceleration
@@ -42,3 +46,27 @@ func _physics_process(delta: float) -> void:
 
 	# Execute movement with collision detection
 	move_and_slide()
+
+	# Update state machine
+	_update_state()
+
+func _update_state() -> void:
+	var previous_state = current_state
+
+	# Determine new state based on velocity and floor detection
+	if is_on_floor():
+		# On ground - check if moving or idle
+		if abs(velocity.x) > 5.0:  # Small threshold to prevent jitter
+			current_state = State.RUNNING
+		else:
+			current_state = State.IDLE
+	else:
+		# In air - check if jumping (rising) or falling
+		if velocity.y < 0:
+			current_state = State.JUMPING
+		else:
+			current_state = State.FALLING
+
+	# Debug print when state changes
+	if current_state != previous_state:
+		print("State changed: ", State.keys()[previous_state], " -> ", State.keys()[current_state])

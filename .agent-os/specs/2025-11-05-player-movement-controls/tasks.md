@@ -36,13 +36,13 @@
   - [x] 4.6 Test jumping with different hold durations
   - [x] 4.7 Tune jump feel (adjust JUMP_VELOCITY and GRAVITY values)
 
-- [ ] 5. Implement State Machine
-  - [ ] 5.1 Define State enum (IDLE, RUNNING, JUMPING, FALLING)
-  - [ ] 5.2 Add `current_state` variable
-  - [ ] 5.3 Create state transition logic based on velocity and floor detection
-  - [ ] 5.4 Update state each physics frame
-  - [ ] 5.5 Add debug print statements to verify state transitions
-  - [ ] 5.6 Test state changes by moving, jumping, and landing
+- [x] 5. Implement State Machine
+  - [x] 5.1 Define State enum (IDLE, RUNNING, JUMPING, FALLING)
+  - [x] 5.2 Add `current_state` variable
+  - [x] 5.3 Create state transition logic based on velocity and floor detection
+  - [x] 5.4 Update state each physics frame
+  - [x] 5.5 Add debug print statements to verify state transitions
+  - [x] 5.6 Test state changes by moving, jumping, and landing
 
 - [ ] 6. Create Placeholder Animations
   - [ ] 6.1 Create idle animation (2 frames, simple sprite variations)
