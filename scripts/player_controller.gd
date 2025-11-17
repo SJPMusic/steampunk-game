@@ -67,6 +67,30 @@ func _update_state() -> void:
 		else:
 			current_state = State.FALLING
 
+	# Play animation based on current state
+	_play_animation_for_state()
+
+	# Flip sprite based on movement direction
+	if velocity.x != 0:
+		$VisualSprite.scale.x = -1 if velocity.x < 0 else 1
+
 	# Debug print when state changes
 	if current_state != previous_state:
 		print("State changed: ", State.keys()[previous_state], " -> ", State.keys()[current_state])
+
+func _play_animation_for_state() -> void:
+	var animation_player = $AnimationPlayer
+
+	match current_state:
+		State.IDLE:
+			if animation_player.current_animation != "idle":
+				animation_player.play("idle")
+		State.RUNNING:
+			if animation_player.current_animation != "run":
+				animation_player.play("run")
+		State.JUMPING:
+			if animation_player.current_animation != "jump":
+				animation_player.play("jump")
+		State.FALLING:
+			if animation_player.current_animation != "fall":
+				animation_player.play("fall")

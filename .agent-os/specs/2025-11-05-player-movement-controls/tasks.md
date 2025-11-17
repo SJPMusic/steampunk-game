@@ -44,22 +44,22 @@
   - [x] 5.5 Add debug print statements to verify state transitions
   - [x] 5.6 Test state changes by moving, jumping, and landing
 
-- [ ] 6. Create Placeholder Animations
-  - [ ] 6.1 Create idle animation (2 frames, simple sprite variations)
-  - [ ] 6.2 Create run animation (4-6 frames, simple movement cycle)
-  - [ ] 6.3 Create jump animation (1-2 frames for rising)
-  - [ ] 6.4 Create fall animation (1-2 frames for falling)
-  - [ ] 6.5 Use AnimationPlayer to define animation tracks
-  - [ ] 6.6 Set appropriate frame rates (8-12 FPS for pixel art)
+- [x] 6. Create Placeholder Animations
+  - [x] 6.1 Create idle animation (2 frames, simple sprite variations)
+  - [x] 6.2 Create run animation (4-6 frames, simple movement cycle)
+  - [x] 6.3 Create jump animation (1-2 frames for rising)
+  - [x] 6.4 Create fall animation (1-2 frames for falling)
+  - [x] 6.5 Use AnimationPlayer to define animation tracks
+  - [x] 6.6 Set appropriate frame rates (8-12 FPS for pixel art)
 
-- [ ] 7. Integrate Animations with State Machine
-  - [ ] 7.1 Add animation playback logic to state machine
-  - [ ] 7.2 Play "idle" animation when current_state is IDLE
-  - [ ] 7.3 Play "run" animation when current_state is RUNNING
-  - [ ] 7.4 Play "jump" animation when current_state is JUMPING
-  - [ ] 7.5 Play "fall" animation when current_state is FALLING
-  - [ ] 7.6 Implement sprite flipping based on velocity direction
-  - [ ] 7.7 Test smooth animation transitions
+- [x] 7. Integrate Animations with State Machine
+  - [x] 7.1 Add animation playback logic to state machine
+  - [x] 7.2 Play "idle" animation when current_state is IDLE
+  - [x] 7.3 Play "run" animation when current_state is RUNNING
+  - [x] 7.4 Play "jump" animation when current_state is JUMPING
+  - [x] 7.5 Play "fall" animation when current_state is FALLING
+  - [x] 7.6 Implement sprite flipping based on velocity direction
+  - [x] 7.7 Test smooth animation transitions
 
 - [ ] 8. Create Test Train Car Scene
   - [ ] 8.1 Create new scene: `scenes/test_train_car.tscn` (Node2D root)
