@@ -9,7 +9,7 @@ config_version=5
 
 config/name="Steampunk Train RPG"
 config/description="A 16-bit side-scrolling action RPG set aboard a transcontinental steampunk train"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/test_train_car.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 

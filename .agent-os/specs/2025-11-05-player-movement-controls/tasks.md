@@ -61,44 +61,44 @@
   - [x] 7.6 Implement sprite flipping based on velocity direction
   - [x] 7.7 Test smooth animation transitions
 
-- [ ] 8. Create Test Train Car Scene
-  - [ ] 8.1 Create new scene: `scenes/test_train_car.tscn` (Node2D root)
-  - [ ] 8.2 Add floor StaticBody2D with CollisionShape2D and visual ColorRect
-  - [ ] 8.3 Add platform StaticBody2D at mid-height
-  - [ ] 8.4 Add left and right wall StaticBody2D nodes
-  - [ ] 8.5 Set collision layers (Layer 2 for environment)
-  - [ ] 8.6 Instance player scene into train car
-  - [ ] 8.7 Position player above floor at spawn point
-  - [ ] 8.8 Add background color for train interior aesthetic
+- [x] 8. Create Test Train Car Scene
+  - [x] 8.1 Create new scene: `scenes/test_train_car.tscn` (Node2D root)
+  - [x] 8.2 Add floor StaticBody2D with CollisionShape2D and visual ColorRect
+  - [x] 8.3 Add platform StaticBody2D at mid-height
+  - [x] 8.4 Add left and right wall StaticBody2D nodes
+  - [x] 8.5 Set collision layers (Layer 2 for environment)
+  - [x] 8.6 Instance player scene into train car
+  - [x] 8.7 Position player above floor at spawn point
+  - [x] 8.8 Add background color for train interior aesthetic
 
-- [ ] 9. Configure Camera Boundaries
-  - [ ] 9.1 Calculate train car bounds (left, right, top, bottom)
-  - [ ] 9.2 Set Camera2D limit properties in player scene
-  - [ ] 9.3 Test camera follows player within bounds
-  - [ ] 9.4 Verify camera doesn't show empty space outside train car
-  - [ ] 9.5 Adjust smoothing speed if needed
+- [x] 9. Configure Camera Boundaries
+  - [x] 9.1 Calculate train car bounds (left, right, top, bottom)
+  - [x] 9.2 Set Camera2D limit properties in player scene
+  - [x] 9.3 Test camera follows player within bounds
+  - [x] 9.4 Verify camera doesn't show empty space outside train car
+  - [x] 9.5 Adjust smoothing speed if needed
 
-- [ ] 10. Implement Quality-of-Life Features
-  - [ ] 10.1 Add jump buffering (store jump input for 0.1 seconds)
-  - [ ] 10.2 Add coyote time (allow jump shortly after leaving platform)
-  - [ ] 10.3 Test jump buffering by pressing jump before landing
-  - [ ] 10.4 Test coyote time by walking off platform and jumping late
-  - [ ] 10.5 Tune buffer and coyote time values for best feel
+- [x] 10. Implement Quality-of-Life Features
+  - [x] 10.1 Add jump buffering (store jump input for 0.1 seconds)
+  - [x] 10.2 Add coyote time (allow jump shortly after leaving platform)
+  - [x] 10.3 Test jump buffering by pressing jump before landing
+  - [x] 10.4 Test coyote time by walking off platform and jumping late
+  - [x] 10.5 Tune buffer and coyote time values for best feel
 
-- [ ] 11. Polish and Tune Movement Feel
-  - [ ] 11.1 Playtest movement extensively in test train car
-  - [ ] 11.2 Adjust SPEED, ACCELERATION, FRICTION values for responsiveness
-  - [ ] 11.3 Adjust JUMP_VELOCITY and GRAVITY for satisfying jump arc
-  - [ ] 11.4 Adjust AIR_CONTROL for desired mid-air maneuverability
-  - [ ] 11.5 Ensure movement feels tight and responsive (no floatiness)
-  - [ ] 11.6 Document final tuned values in technical spec
+- [x] 11. Polish and Tune Movement Feel
+  - [x] 11.1 Playtest movement extensively in test train car
+  - [x] 11.2 Adjust SPEED, ACCELERATION, FRICTION values for responsiveness
+  - [x] 11.3 Adjust JUMP_VELOCITY and GRAVITY for satisfying jump arc
+  - [x] 11.4 Adjust AIR_CONTROL for desired mid-air maneuverability
+  - [x] 11.5 Ensure movement feels tight and responsive (no floatiness)
+  - [x] 11.6 Document final tuned values in technical spec
 
-- [ ] 12. Final Testing and Validation
-  - [ ] 12.1 Test all movement directions (left, right, jump)
-  - [ ] 12.2 Test edge cases (jumping into ceiling, running into walls)
-  - [ ] 12.3 Test gamepad input (if available)
-  - [ ] 12.4 Verify all animations play correctly
-  - [ ] 12.5 Verify camera follows smoothly
-  - [ ] 12.6 Verify 60 FPS performance in test scene
-  - [ ] 12.7 Confirm all expected deliverables are met
-  - [ ] 12.8 Document any issues or future improvements
+- [x] 12. Final Testing and Validation
+  - [x] 12.1 Test all movement directions (left, right, jump)
+  - [x] 12.2 Test edge cases (jumping into ceiling, running into walls)
+  - [x] 12.3 Test gamepad input (if available)
+  - [x] 12.4 Verify all animations play correctly
+  - [x] 12.5 Verify camera follows smoothly
+  - [x] 12.6 Verify 60 FPS performance in test scene
+  - [x] 12.7 Confirm all expected deliverables are met
+  - [x] 12.8 Document any issues or future improvements

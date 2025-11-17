@@ -11,16 +11,43 @@ const FRICTION = 1000.0          # Deceleration when no input
 const GRAVITY = 980.0            # Gravity force (pixels/sec²)
 const AIR_CONTROL = 0.8          # Air movement multiplier (0.0-1.0)
 const JUMP_VELOCITY = -300.0     # Initial jump force (negative = up)
+const JUMP_BUFFER_TIME = 0.1     # Seconds to buffer jump input
+const COYOTE_TIME = 0.1          # Seconds of grace after leaving platform
+
+# Quality-of-life timers
+var jump_buffer_timer: float = 0.0
+var coyote_timer: float = 0.0
+var was_on_floor: bool = false
 
 func _physics_process(delta: float) -> void:
+	# Update coyote time timer
+	if is_on_floor():
+		coyote_timer = COYOTE_TIME
+		was_on_floor = true
+	elif was_on_floor:
+		# Just left the floor - start coyote time countdown
+		was_on_floor = false
+	else:
+		# In air - decrease coyote timer
+		coyote_timer -= delta
+
 	# Apply gravity when not on floor
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 
-	# Handle jump input
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		# Player pressed jump while on ground - apply upward velocity
+	# Update jump buffer timer
+	if Input.is_action_just_pressed("jump"):
+		jump_buffer_timer = JUMP_BUFFER_TIME
+	else:
+		jump_buffer_timer -= delta
+
+	# Handle jump input with buffering and coyote time
+	var can_jump = is_on_floor() or coyote_timer > 0
+	if jump_buffer_timer > 0 and can_jump:
+		# Player pressed jump recently and can jump - apply upward velocity
 		velocity.y = JUMP_VELOCITY
+		jump_buffer_timer = 0.0  # Consume the buffered jump
+		coyote_timer = 0.0  # Consume coyote time
 
 	# Variable jump height - release jump early to fall faster
 	if Input.is_action_just_released("jump") and velocity.y < 0:
